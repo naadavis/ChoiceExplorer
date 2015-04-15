@@ -1,0 +1,29 @@
+/* Constant Styling */
+
+.text
+{
+	text-anchor: left;
+	font-family: sans-serif;
+	font-size: 14px;
+	fill: black;
+}
+
+.info
+{
+	text-anchor: left;
+	font-family: sans-serif;
+	font-size: 14px;
+	fill: black;
+}
+
+.info.header
+{
+	text-anchor: middle;
+	font-size: 16px;
+}
+
+.staticRect
+{
+	opacity: 1;
+}
+
