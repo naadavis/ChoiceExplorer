@@ -1,11 +1,11 @@
+from __future__ import division
 from flask import Flask, jsonify, render_template, request
+import topN
 app = Flask(__name__)
 
 # Nicholas Davis
 # 2015
 
-from __future__ import division
-import topN
 
 # Jaccard distance metric to calculate similarity
 def sjaccard( l1, l2 ):
@@ -60,7 +60,7 @@ def decode(a):
 	return a.encode('utf-8')
 
 @app.route('/_get_recs')
-def get_stringlist():
+def get_recs():
 	a = request.args.get('length')
 	l = []
 	for i in range(0,int(a)):
@@ -71,7 +71,7 @@ def get_stringlist():
 	r = getResult(l)
 	return jsonify(**r)
 
-# HTML isn't quite prepared yet
+# HTML/JS isn't quite prepared yet
 @app.route('/')
 def index():
 	return render_template('index.html')

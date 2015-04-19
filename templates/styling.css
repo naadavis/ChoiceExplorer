@@ -1,0 +1,58 @@
+.canvas {
+}
+
+.canvas rect {
+	fill: lightblue;
+	stroke-width: 2;
+	stroke: black
+}
+
+.canvas text {
+	fill: white;
+	font: 10px sans-serif;
+	text-anchor: middle;
+}
+
+.col1 rect {
+	fill: lightblue;
+	stroke-width: 2;
+	stroke: black;
+}
+
+.col1 text {
+	fill: black;
+	font: 14px sans-serif;
+	text-anchor: start;
+	opacity: 1;
+}
+
+.col2 rect {
+	fill: lightgreen;
+	stroke-width: 2;
+	stroke: black;
+}
+
+.col2 text {
+	fill: black;
+	font: 14px sans-serif;
+	text-anchor: start;
+	opacity: 1;
+}
+.col3 rect {
+	fill: pink;
+	stroke-width: 2;
+	stroke: black;
+}
+
+.col3 text {
+	fill: black;
+	font: 14px sans-serif;
+	text-anchor: start;
+	opacity: 1;
+}
+
+.title {
+	fill: orange;
+	font: 20px sans-serif;
+	text-anchor: middle;
+}
