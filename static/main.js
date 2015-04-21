@@ -18,11 +18,21 @@ var RXY = 7;
 var width = 1000,
 	height = 700;
 
-var canvas = d3.select(".canvas")
+// global vars that point to selections
+
+var canvas,col1,col2,col3;
+
+window.onload = function createVisualization() {
+
+	// testing
+	hello = "hello";
+
+
+canvas = d3.select(".canvas")
 	.attr("width",width)
 	.attr("height",height);
 
-var col1 = canvas.selectAll("g .col1").data(data.Active)
+col1 = canvas.selectAll("g .col1").data(data.Active)
 	.enter().append("g")
 	.attr("class","col1")
 	.attr("transform", function(d,i) { 
@@ -40,7 +50,7 @@ col1.append("text")
 	.attr("dy", ".35em" )
 	.text(function(d) { return d; } );
 
-var col2 = canvas.selectAll("g .col2").data(data.Relevant)
+col2 = canvas.selectAll("g .col2").data(data.Relevant)
 	.enter().append("g")
 	.attr("class","col2")
 	.attr("transform", function(d,i) {
@@ -61,7 +71,7 @@ col2.append("text")
 	.attr("onmouseover","mouseOverText2(evt.target)")
 	.text(function(d) { return d[0]; } );
 
-var col3 = canvas.selectAll("g .col3").data(data.Rec)
+col3 = canvas.selectAll("g .col3").data(data.Rec)
 	.enter().append("g")
 	.attr("class","col3")
 	.attr("transform", function(d,i) {
@@ -78,3 +88,5 @@ col3.append("text")
 	.attr("y", RECT_H / 2 )
 	.attr("dy", ".35em" )
 	.text(function(d) { return d; } );
+
+}
