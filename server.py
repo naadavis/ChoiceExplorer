@@ -23,7 +23,7 @@ def getOrderedRecs(user,sets):
 				d[item] += 1
 			else:
 				d[key] = 1
-	sorted_items = sorted(d.items(), k=operator.
+#	sorted_items = sorted(d.items(), k=operator.
 	r = d.items().sort(key = lambda x: x[1])
 	return r[:10]
 	
