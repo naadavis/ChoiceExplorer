@@ -41,6 +41,8 @@ col1 = canvas.selectAll("g .col1").data(data.Active)
 col1.append("rect")
 	.attr("width",RECT_W)
 	.attr("height",RECT_H)
+	.attr("onmouseover","mouseOverEndPanel(evt.target)")
+	.attr("onmouseout","mouseOut()")
 	.attr("rx",RXY)
 	.attr("ry",RXY);
 
@@ -48,6 +50,7 @@ col1.append("text")
 	.attr("x", 10 )
 	.attr("y", RECT_H / 2 )
 	.attr("dy", ".35em" )
+	.attr("onmouseover","mouseOverEndText(evt.target)")
 	.text(function(d) { return d; } );
 
 col2 = canvas.selectAll("g .col2").data(data.Relevant)
@@ -80,6 +83,8 @@ col3 = canvas.selectAll("g .col3").data(data.Rec)
 col3.append("rect")
 	.attr("width",RECT_W)
 	.attr("height",RECT_H)
+	.attr("onmouseover","mouseOverEndPanel(evt.target)")
+	.attr("onmouseout","mouseOut()")
 	.attr("rx",RXY)
 	.attr("ry",RXY);
 
@@ -87,6 +92,7 @@ col3.append("text")
 	.attr("x", 10 )
 	.attr("y", RECT_H / 2 )
 	.attr("dy", ".35em" )
+	.attr("onmouseover","mouseOverEndText(evt.target)")
 	.text(function(d) { return d; } );
 
 }

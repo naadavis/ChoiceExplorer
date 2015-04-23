@@ -32,7 +32,7 @@ top = topN.TopN(7)
 prof_dict = {}
 
 # file to get profile data from
-f = open('music.tsv','r')
+f = open('musicData.tsv','r')
 
 for line in f:
 	l = line.rstrip('\n').split('\t')

@@ -5,6 +5,15 @@ Nicholas Davis
 var delay = 300;
 var duration = 350;
 
+// Function to see if an item is present in a list
+function inArray(list,item)
+{
+	for( var i = 0; i < list.length; i++ )
+		if( item == list[i] )
+			return true
+	return false
+}
+
 // Remove highlighting effects on rectangles and remove paths
 function mouseOut()
 {
@@ -22,6 +31,33 @@ function mouseOut()
 }
 
 // Mouse Over User effects
+function mouseOverEndPanel(element)
+{
+	var item = element.__data__;
+	// match with users
+	var matches = col2.selectAll("rect").filter( function(d) { return inArray(d[1],item); } );
+	var misses = col2.selectAll("rect").filter( function(d) { return !inArray(d[1],item); } );
+
+	misses.transition()
+		.duration(duration)
+		.delay(delay)
+		.attr("opacity",.2);
+
+	matches.each( function(d,i) { connect( element, this ); } );
+
+	// dim other items
+	var notcurr = canvas.selectAll(".col1 rect,.col3 rect")
+		.data( [item], function(d) { return d;});
+
+	notcurr.exit()
+		.transition()
+		.duration(duration)
+		.delay(delay)
+		.attr("opacity",.2);
+
+	// highlight currently selected user
+}
+
 function mouseOverPanel2(element)
 {
 	var clist = element.__data__[1];
@@ -39,7 +75,7 @@ function mouseOverPanel2(element)
 	matches.each( function(d,i) { connect( element, this ) });
 
 	// dim other users
-	var notcurr = col2.selectAll("rect").filter( function(d) { return d[0] != element.__data__[0]; } )
+	var notcurr = col2.selectAll("rect").filter( function(d) { return d[0] != element.__data__[0]; } );
 
 	notcurr
 		.transition()
@@ -55,6 +91,12 @@ function mouseOverText2( element )
 {
 	var rect = d3.select(element.parentNode).select("rect");
 	mouseOverPanel2(rect[0][0]);
+}
+
+function mouseOverEndText( element )
+{
+	var rect = d3.select(element.parentNode).select("rect");
+	mouseOverEndPanel(rect[0][0]);
 }
 
 // Mouse Over Course Effects
