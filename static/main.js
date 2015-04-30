@@ -24,13 +24,16 @@ var canvas,col1,col2,col3;
 
 window.onload = function createVisualization() {
 
-	// testing
-	hello = "hello";
-
-
 canvas = d3.select(".canvas")
 	.attr("width",width)
 	.attr("height",height);
+
+updateVisualization();
+
+}
+
+// Creates the three column visualization based on data object
+function updateVisualization() {
 
 col1 = canvas.selectAll("g .col1").data(data.Active)
 	.enter().append("g")
@@ -43,6 +46,7 @@ col1.append("rect")
 	.attr("height",RECT_H)
 	.attr("onmouseover","mouseOverEndPanel(evt.target)")
 	.attr("onmouseout","mouseOut()")
+	.attr("onclick","removeItem(evt.target)")
 	.attr("rx",RXY)
 	.attr("ry",RXY);
 
@@ -51,6 +55,7 @@ col1.append("text")
 	.attr("y", RECT_H / 2 )
 	.attr("dy", ".35em" )
 	.attr("onmouseover","mouseOverEndText(evt.target)")
+	.attr("onclick","removeItem(evt.target)")
 	.text(function(d) { return d; } );
 
 col2 = canvas.selectAll("g .col2").data(data.Relevant)
@@ -94,5 +99,11 @@ col3.append("text")
 	.attr("dy", ".35em" )
 	.attr("onmouseover","mouseOverEndText(evt.target)")
 	.text(function(d) { return d; } );
+}
 
+function removeVisualization()
+{
+	col1.remove();
+	col2.remove();
+	col3.remove();
 }

@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 
 # Jaccard distance metric to calculate similarity
-def sjaccard( l1, l2 ):
+def sjaccard( a, b ):
 	return len( a & b ) / len( a | b )
 
 # Finds the 10 most popular items from a set of profiles 
@@ -22,10 +22,9 @@ def getOrderedRecs(user,sets):
 			elif item in d:
 				d[item] += 1
 			else:
-				d[key] = 1
-#	sorted_items = sorted(d.items(), k=operator.
-	r = d.items().sort(key = lambda x: x[1])
-	return r[:10]
+				d[item] = 1
+	r = sorted(d.items(),key = lambda x: x[1])
+	return map( lambda x: x[0], r[:10] )
 	
 # Our global dictionary and topN profiles
 top = topN.TopN(7)
@@ -52,8 +51,8 @@ def getResult(l):
 	# iterate through all profiles, keeping most similar
 	for key, value in prof_dict.iteritems():
 		top.add((key,value),sjaccard( user, value ) )
-	result["Relevant"] = map( lambda x: [x[0]] + list(x[1]), top.data )
-	result["Rec"] = getOrderedRecs(user,map( lambda x: x[1], top.data ) )
+	result["Relevant"] = map( lambda x: [x[0][0]] + list(x[0][1]), top.data )
+	result["Rec"] = getOrderedRecs(user,map( lambda x: x[0][1], top.data ) )
 	return result
 
 def decode(a):
@@ -68,7 +67,10 @@ def get_recs():
 	# old results for testing
 	#r = { "result": l }
 	#r = { "result": [ ['a',l[0]],['b',l[1]],['r',l[0]+l[1]] ] }
+	print l
 	r = getResult(l)
+	print r["Relevant"]
+	print r["Rec"]
 	return jsonify(**r)
 
 # HTML/JS isn't quite prepared yet
