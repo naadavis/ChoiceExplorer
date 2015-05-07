@@ -31,7 +31,8 @@ top = topN.TopN(7)
 prof_dict = {}
 
 # file to get profile data from
-f = open('musicData.tsv','r')
+#f = open('musicData.tsv','r')
+f = open('smallData.tsv','r')
 
 for line in f:
 	l = line.rstrip('\n').split('\t')
@@ -51,7 +52,7 @@ def getResult(l):
 	# iterate through all profiles, keeping most similar
 	for key, value in prof_dict.iteritems():
 		top.add((key,value),sjaccard( user, value ) )
-	result["Relevant"] = map( lambda x: [x[0][0]] + list(x[0][1]), top.data )
+	result["Relevant"] = map( lambda x: [ x[0][0] , list(x[0][1]) ] , top.data )
 	result["Rec"] = getOrderedRecs(user,map( lambda x: x[0][1], top.data ) )
 	return result
 

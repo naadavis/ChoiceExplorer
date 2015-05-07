@@ -55,6 +55,7 @@ col1.append("text")
 	.attr("y", RECT_H / 2 )
 	.attr("dy", ".35em" )
 	.attr("onmouseover","mouseOverEndText(evt.target)")
+	.attr("onmouseout","mouseOut()")
 	.attr("onclick","removeItem(evt.target)")
 	.text(function(d) { return d; } );
 
@@ -77,6 +78,7 @@ col2.append("text")
 	.attr("y", RECT_H / 2 )
 	.attr("dy", ".35em" )
 	.attr("onmouseover","mouseOverText2(evt.target)")
+	.attr("onmouseout","mouseOut()")
 	.text(function(d) { return d[0]; } );
 
 col3 = canvas.selectAll("g .col3").data(data.Rec)
@@ -98,6 +100,7 @@ col3.append("text")
 	.attr("y", RECT_H / 2 )
 	.attr("dy", ".35em" )
 	.attr("onmouseover","mouseOverEndText(evt.target)")
+	.attr("onmouseout","mouseOut()")
 	.text(function(d) { return d; } );
 }
 

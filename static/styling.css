@@ -1,4 +1,5 @@
 .canvas {
+	background: grey;
 }
 
 .canvas rect {
@@ -14,38 +15,38 @@
 }
 
 .col1 rect {
-	fill: lightblue;
+	fill: darkblue;
 	stroke-width: 2;
 	stroke: black;
 }
 
 .col1 text {
-	fill: black;
+	fill: white;
 	font: 14px sans-serif;
 	text-anchor: start;
 	opacity: 1;
 }
 
 .col2 rect {
-	fill: lightgreen;
+	fill: grey;
 	stroke-width: 2;
 	stroke: black;
 }
 
 .col2 text {
-	fill: black;
+	fill: white;
 	font: 14px sans-serif;
 	text-anchor: start;
 	opacity: 1;
 }
 .col3 rect {
-	fill: pink;
+	fill: black;
 	stroke-width: 2;
 	stroke: black;
 }
 
 .col3 text {
-	fill: black;
+	fill: white;
 	font: 14px sans-serif;
 	text-anchor: start;
 	opacity: 1;
