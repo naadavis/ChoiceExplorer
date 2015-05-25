@@ -27,7 +27,6 @@ def getOrderedRecs(user,sets):
 	return map( lambda x: x[0], r[:10] )
 	
 # Our global dictionary and topN profiles
-top = topN.TopN(7)
 prof_dict = {}
 
 # file to get profile data from
@@ -49,11 +48,16 @@ def getResult(l):
 	result = {}
 	result["Active"] = l
 	user = set(l)
+	top = topN.TopN(7)
 	# iterate through all profiles, keeping most similar
 	for key, value in prof_dict.iteritems():
 		top.add((key,value),sjaccard( user, value ) )
 	result["Relevant"] = map( lambda x: [ x[0][0] , list(x[0][1]) ] , top.data )
 	result["Rec"] = getOrderedRecs(user,map( lambda x: x[0][1], top.data ) )
+	for i in range(0,len(top.data)):
+		print top.data[i][0][0],
+		print top.data[i][1]
+	#top.printSmall()
 	return result
 
 def decode(a):
@@ -68,10 +72,10 @@ def get_recs():
 	# old results for testing
 	#r = { "result": l }
 	#r = { "result": [ ['a',l[0]],['b',l[1]],['r',l[0]+l[1]] ] }
-	print l
+	#print l
 	r = getResult(l)
-	print r["Relevant"]
-	print r["Rec"]
+	#print r["Relevant"]
+	#print r["Rec"]
 	return jsonify(**r)
 
 # HTML/JS isn't quite prepared yet

@@ -29,4 +29,8 @@ class TopN:
 	def printSelf(self):
 		for i in range(0,len(self.data)):
 			print self.data[i]
+	
+	def printSmall(self):
+		for i in range(0,len(self.data)):
+			print self.data[i][1]
 

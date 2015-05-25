@@ -16,7 +16,7 @@ var TOP_MARGIN = 50;
 var RXY = 7;
 
 var width = 1000,
-	height = 700;
+	height = 500;
 
 // global vars that point to selections
 
@@ -92,6 +92,7 @@ col3.append("rect")
 	.attr("height",RECT_H)
 	.attr("onmouseover","mouseOverEndPanel(evt.target)")
 	.attr("onmouseout","mouseOut()")
+	.attr("onclick","addItem(evt.target)")
 	.attr("rx",RXY)
 	.attr("ry",RXY);
 
@@ -101,6 +102,7 @@ col3.append("text")
 	.attr("dy", ".35em" )
 	.attr("onmouseover","mouseOverEndText(evt.target)")
 	.attr("onmouseout","mouseOut()")
+	.attr("onclick","addItem(evt.target)")
 	.text(function(d) { return d; } );
 }
 
@@ -109,4 +111,11 @@ function removeVisualization()
 	col1.remove();
 	col2.remove();
 	col3.remove();
+	removePaths();
+}
+
+function removePaths()
+{
+	canvas.selectAll( "path" )
+		.remove();
 }

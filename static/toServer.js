@@ -39,3 +39,11 @@ function removeItem( element )
 		data.Active.splice(pos,1);
 	get_new_recs();
 }
+
+// Adds an Element to Active
+function addItem( element )
+{
+	var item = element.__data__;
+	data.Active.push( item );
+	get_new_recs();
+}
