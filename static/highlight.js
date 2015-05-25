@@ -169,6 +169,6 @@ function drawPath( x1, y1, x2, y2 )
 		.style("opacity",.8)
 		.attr("d", M + H1 + L + H2 )
 		.style("stroke-width",3)
-		.style("stroke","white")
+		.style("stroke","steelblue")
 		.style("fill","none");
 }

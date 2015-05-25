@@ -1,5 +1,5 @@
 var data = {
-	"Active": ["list","of","user","artists"],
+	"Active": ["the beatles","snow patrol","audioslave","yeah yeah yeahs"],
 	"Relevant" : [
 		["Person 1", ["list","of","person1","artists"] ],
 		["Person 2", ["list","of","person2","artists"] ],
@@ -13,9 +13,10 @@ var RECT_H = 30;
 var H_MARGIN = ( PANEL_W - RECT_W ) / 2;
 var V_MARGIN = 10;
 var TOP_MARGIN = 50;
+var LEFT_MARGIN = 200;
 var RXY = 7;
 
-var width = 1000,
+var width = 1400,
 	height = 500;
 
 // global vars that point to selections
@@ -29,6 +30,7 @@ canvas = d3.select(".canvas")
 	.attr("height",height);
 
 updateVisualization();
+get_new_recs();
 
 }
 
@@ -39,7 +41,7 @@ col1 = canvas.selectAll("g .col1").data(data.Active)
 	.enter().append("g")
 	.attr("class","col1")
 	.attr("transform", function(d,i) { 
-		return "translate(" + H_MARGIN + "," + ( i * ( 30 + V_MARGIN ) + TOP_MARGIN ) + ")"; });
+		return "translate(" + ( LEFT_MARGIN ) + "," + ( i * ( 30 + V_MARGIN ) + TOP_MARGIN ) + ")"; });
 
 col1.append("rect")
 	.attr("width",RECT_W)
@@ -63,7 +65,7 @@ col2 = canvas.selectAll("g .col2").data(data.Relevant)
 	.enter().append("g")
 	.attr("class","col2")
 	.attr("transform", function(d,i) {
-		return "translate(" + ( H_MARGIN + PANEL_W ) + "," + ( i * ( 30 + V_MARGIN ) + TOP_MARGIN ) + ")"; });
+		return "translate(" + ( LEFT_MARGIN + ( PANEL_W ) ) + "," + ( i * ( 30 + V_MARGIN ) + TOP_MARGIN ) + ")"; });
 
 col2.append("rect")
 	.attr("width",RECT_W)
@@ -85,7 +87,7 @@ col3 = canvas.selectAll("g .col3").data(data.Rec)
 	.enter().append("g")
 	.attr("class","col3")
 	.attr("transform", function(d,i) {
-		return "translate(" + ( H_MARGIN + 2*PANEL_W ) + "," + ( i * ( 30 + V_MARGIN ) + TOP_MARGIN ) + ")"; });
+		return "translate(" + ( LEFT_MARGIN + ( 2*PANEL_W ) ) + "," + ( i * ( 30 + V_MARGIN ) + TOP_MARGIN ) + ")"; });
 
 col3.append("rect")
 	.attr("width",RECT_W)
