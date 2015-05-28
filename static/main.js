@@ -12,12 +12,16 @@ var RECT_W = 200;
 var RECT_H = 30;
 var H_MARGIN = ( PANEL_W - RECT_W ) / 2;
 var V_MARGIN = 10;
-var TOP_MARGIN = 50;
+var TOP_MARGIN = 200;
 var LEFT_MARGIN = 200;
 var RXY = 7;
 
+/*
 var width = 1400,
 	height = 500;
+	*/
+var width = window.innerWidth,
+	height = window.innerHeight;
 
 // global vars that point to selections
 

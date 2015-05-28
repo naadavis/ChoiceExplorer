@@ -30,14 +30,32 @@ def getOrderedRecs(user,sets):
 prof_dict = {}
 
 # file to get profile data from
-#f = open('musicData.tsv','r')
-f = open('smallData.tsv','r')
+f = open('musicData2.tsv','r')
+#f = open('smallData.tsv','r')
 
 for line in f:
 	l = line.rstrip('\n').split('\t')
-	prof_dict[l[0]] = set(l[1:])
+	prof_dict[int(l[0])] = set(l[1:])
 
 f.close()
+
+men_names = []
+
+f = open('men.txt','r')
+for line in f:
+	l = line.rstrip('\n')
+	men_names.append(l)
+f.close()
+
+women_names = []
+f = open('women.txt','r')
+for line in f:
+	l = line.rstrip('\n')
+	women_names.append(l)
+f.close()
+
+print len(women_names)
+print len(men_names)
 
 print "Loaded in ",
 print len(prof_dict),
@@ -51,7 +69,12 @@ def getResult(l):
 	top = topN.TopN(7)
 	# iterate through all profiles, keeping most similar
 	for key, value in prof_dict.iteritems():
-		top.add((key,value),sjaccard( user, value ) )
+		name = ""
+		if ( key % 2 ) == 0:
+			name = women_names[key//2]
+		else:
+			name = men_names[key//2]
+		top.add((name,value),sjaccard( user, value ) )
 	result["Relevant"] = map( lambda x: [ x[0][0] , list(x[0][1]) ] , top.data )
 	result["Rec"] = getOrderedRecs(user,map( lambda x: x[0][1], top.data ) )
 	for i in range(0,len(top.data)):
