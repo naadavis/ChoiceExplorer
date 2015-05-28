@@ -1,5 +1,5 @@
 .canvas {
-	background: lightgrey;
+	background: #f1f2d8;
 	position: absolute;
 	left: 0px;
 	top: 0px;
@@ -12,22 +12,20 @@
 }
 
 .rectText {
-	fill: white;
+	fill: #1b1d26;
 	font: 10px sans-serif;
 	text-anchor: middle;
 }
 
 .titleText {
-	fill: white;
+	fill: charcoal;
 	font: 30px sans-serif;
 	text-anchor: middle;
-	font-weight: bolder;
-	stroke: black;
-	stroke-width: 1px;
+	font-weight: 500;
 }
 
 .col1 rect {
-	fill: darkblue;
+	fill: #425955;
 	stroke-width: 2;
 	stroke: black;
 }
@@ -40,7 +38,7 @@
 }
 
 .col2 rect {
-	fill: grey;
+	fill: #a6a48a;
 	stroke-width: 2;
 	stroke: black;
 }
@@ -52,7 +50,7 @@
 	opacity: 1;
 }
 .col3 rect {
-	fill: black;
+	fill: #778c7a;
 	stroke-width: 2;
 	stroke: black;
 }
@@ -62,10 +60,4 @@
 	font: 14px sans-serif;
 	text-anchor: start;
 	opacity: 1;
-}
-
-.title {
-	fill: orange;
-	font: 20px sans-serif;
-	text-anchor: middle;
 }

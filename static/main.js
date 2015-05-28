@@ -7,13 +7,13 @@ var data = {
 	"Rec": ["list","of","recommended","artists"]
 }
 
-var PANEL_W = 300;
+var PANEL_W = 350;
 var RECT_W = 200;
 var RECT_H = 30;
 var H_MARGIN = ( PANEL_W - RECT_W ) / 2;
 var V_MARGIN = 10;
 var TOP_MARGIN = 200;
-var LEFT_MARGIN = 200;
+var LEFT_MARGIN = 100;
 var RXY = 7;
 
 /*
