@@ -11,10 +11,19 @@
 	stroke: black
 }
 
-.canvas text {
+.rectText {
 	fill: white;
 	font: 10px sans-serif;
 	text-anchor: middle;
+}
+
+.titleText {
+	fill: white;
+	font: 30px sans-serif;
+	text-anchor: middle;
+	font-weight: bolder;
+	stroke: black;
+	stroke-width: 1px;
 }
 
 .col1 rect {

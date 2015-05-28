@@ -33,6 +33,25 @@ canvas = d3.select(".canvas")
 	.attr("width",width)
 	.attr("height",height);
 
+// create static parts of display
+canvas.append("text")
+	.attr("x",LEFT_MARGIN + RECT_W/2 )
+	.attr("y",180)
+	.attr("class","titleText")
+	.text("My Profile");
+
+canvas.append("text")
+	.attr("x",LEFT_MARGIN + PANEL_W + RECT_W/2 )
+	.attr("y",180)
+	.attr("class","titleText")
+	.text("Similar People");
+
+canvas.append("text")
+	.attr("x",LEFT_MARGIN + 2*PANEL_W + RECT_W/2 )
+	.attr("y",180)
+	.attr("class","titleText")
+	.text("Recommendations");
+
 updateVisualization();
 get_new_recs();
 
@@ -59,6 +78,7 @@ col1.append("rect")
 col1.append("text")
 	.attr("x", 10 )
 	.attr("y", RECT_H / 2 )
+	.attr("class","rectText")
 	.attr("dy", ".35em" )
 	.attr("onmouseover","mouseOverEndText(evt.target)")
 	.attr("onmouseout","mouseOut()")
@@ -82,6 +102,7 @@ col2.append("rect")
 col2.append("text")
 	.attr("x", 10 )
 	.attr("y", RECT_H / 2 )
+	.attr("class","rectText")
 	.attr("dy", ".35em" )
 	.attr("onmouseover","mouseOverText2(evt.target)")
 	.attr("onmouseout","mouseOut()")
@@ -105,6 +126,7 @@ col3.append("rect")
 col3.append("text")
 	.attr("x", 10 )
 	.attr("y", RECT_H / 2 )
+	.attr("class","rectText")
 	.attr("dy", ".35em" )
 	.attr("onmouseover","mouseOverEndText(evt.target)")
 	.attr("onmouseout","mouseOut()")
