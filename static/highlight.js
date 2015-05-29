@@ -71,15 +71,18 @@ function mouseOverEndPanel(element)
 		.attr("xlink:href", function(d) { return "/static/recs/" + item.replace(/ /g,"") + ".png"; } )
 		.attr("viewBox","0 0 270 615")
 		.attr("preserveAspectRatio", "none")
-		.attr("x",3*PANEL_W + LEFT_MARGIN - 20 )
+		.attr("x",INFO_LEFT)
 		.attr("y",TOP_MARGIN)
 		.attr("width",270)
 		.attr("height",615);
+
+		//.attr("x",3*PANEL_W + LEFT_MARGIN - 20 )
 }
 
 function mouseOverPanel2(element)
 {
 	var clist = element.__data__[1];
+	var name = element.__data__[0];
 	// Dim Courses not connected with user
 	var matches = canvas.selectAll( ".col1 rect,.col3 rect" )
 		.data( clist, function(d) { return d;})
@@ -104,6 +107,70 @@ function mouseOverPanel2(element)
 
 
 	// Highlight Currently Selected User
+	canvas.append("rect")
+		.attr("class","info")
+		.transition()
+		.duration(duration)
+		.delay(delay)
+		.attr("stroke","black")
+		.attr("stroke-width",2)
+		.attr("height",150)
+		.attr("width",160)
+		.attr("x",INFO_LEFT - 80 + 270/2 )
+		.attr("y",TOP_MARGIN + 15 );
+	canvas.append("svg:image")
+		.attr("class","info")
+		.transition()
+		.duration(duration)
+		.delay(delay)
+		.attr("xlink:href", "/static/pics/" + name.replace(/ /g,"") + ".jpg" )
+		.attr("height",150)
+		.attr("width",160)
+		.attr("x",3*PANEL_W + LEFT_MARGIN - 100 + 270/2 )
+		.attr("y",TOP_MARGIN + 15 );
+	canvas.append("text")
+		.attr("class","info")
+		.attr("fill","white")
+		.attr("font","sans-serif")
+		.attr("font-size","28px")
+		.attr("text-anchor","middle")
+		.transition()
+		.duration(duration)
+		.delay(delay)
+		.text(name)
+		.attr("x",INFO_LEFT + 270/2 )
+		.attr("y",TOP_MARGIN + 15 + 180 );
+	canvas.append("text")
+		.attr("class","info")
+		.attr("fill","white")
+		.attr("font","sans-serif")
+		.attr("font-size","18px")
+		.attr("text-anchor","start")
+		.transition()
+		.duration(duration)
+		.delay(delay)
+		.text("Listens To:")
+		.attr("x",INFO_LEFT + 15 )
+		.attr("y",TOP_MARGIN + 15 + 230 );
+	canvas.selectAll( ".info")
+		.data( clist, function(d) { return d;})
+		.enter()
+		.append("text")
+		.attr("class","info")
+		.attr("fill","white")
+		.attr("font","sans-serif")
+		.attr("font-size","14px")
+		.attr("text-anchor","start")
+		.transition()
+		.duration(duration)
+		.delay(delay)
+		.text( function(d) { return "+ " +  d; } )
+		.attr("x", INFO_LEFT + 25 )
+		.attr("y", function(d,i) { return TOP_MARGIN + 270 + 20*i } );
+	
+
+
+
 
 }
 
