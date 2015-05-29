@@ -25,14 +25,15 @@ def getOrderedRecs(user,sets):
 			else:
 				d[item] = 1
 	r = sorted(d.items(),key = lambda x: x[1])
-	return map( lambda x: x[0], r[:10] )
+	return map( lambda x: x[0], r[:6] )
 	
 # Our global dictionary and topN profiles
 prof_dict = {}
 
 # file to get profile data from
-f = open('musicData3.tsv','r')
+#f = open('musicData3.tsv','r')
 #f = open('smallData.tsv','r')
+f = open('bandData.tsv','r')
 
 for line in f:
 	l = line.rstrip('\n').split('\t')

@@ -1,8 +1,6 @@
 var data = {
-	"Active": ["the beatles","snow patrol","audioslave","yeah yeah yeahs"],
+	"Active": ["Daughter","The National","Damien Rice"],
 	"Relevant" : [
-		["Person 1", ["list","of","person1","artists"] ],
-		["Person 2", ["list","of","person2","artists"] ],
 	],
 	"Rec": ["list","of","recommended","artists"]
 }
@@ -12,8 +10,8 @@ var RECT_W = 200;
 var RECT_H = 70;
 var H_MARGIN = ( PANEL_W - RECT_W ) / 2;
 var V_MARGIN = 10;
-var TOP_MARGIN = 200;
-var LEFT_MARGIN = 100;
+var TOP_MARGIN = 150;
+var LEFT_MARGIN = 50;
 var RXY = 7;
 
 /*
@@ -36,21 +34,42 @@ canvas = d3.select(".canvas")
 // create static parts of display
 canvas.append("text")
 	.attr("x",LEFT_MARGIN + RECT_W/2 )
-	.attr("y",180)
+	.attr("y",TOP_MARGIN - 30 )
 	.attr("class","titleText")
 	.text("My Profile");
 
 canvas.append("text")
 	.attr("x",LEFT_MARGIN + PANEL_W + RECT_W/2 )
-	.attr("y",180)
+	.attr("y",TOP_MARGIN - 30 )
 	.attr("class","titleText")
 	.text("Similar People");
 
 canvas.append("text")
 	.attr("x",LEFT_MARGIN + 2*PANEL_W + RECT_W/2 )
-	.attr("y",180)
+	.attr("y",TOP_MARGIN - 30 )
 	.attr("class","titleText")
 	.text("Recommendations");
+
+canvas.append("text")
+	.attr("x",20)
+	.attr("y",40)
+	.attr("font-size","30px")
+	.attr("font-weight","bold")
+	.text("Choice Explorer")
+
+canvas.append("text")
+	.attr("x",width-300)
+	.attr("y",40)
+	.attr("font-size","30px")
+	.attr("font-weight","bold")
+	.text("Domain: Music")
+
+canvas.append("rect")
+	.attr("fill","grey")
+	.attr("x",3*PANEL_W + LEFT_MARGIN - 20 )
+	.attr("y",TOP_MARGIN)
+	.attr("width",270)
+	.attr("height",615)
 
 updateVisualization();
 get_new_recs();
@@ -109,7 +128,7 @@ col2.append("text")
 	.text(function(d) { return d[0]; } );
 
 col2.append("svg:image")
-	.attr("xlink:href", function(d) { return "/static/pics/" + d[0].replace(" ","") + ".jpg" } )
+	.attr("xlink:href", function(d) { return "/static/pics/" + d[0].replace(/ /g,"") + ".jpg" } )
 	.attr("x", RECT_W - 70 )
 	.attr("y", RECT_H/2 - 50/2)
 	.attr("width",60)
@@ -148,6 +167,7 @@ function removeVisualization()
 	col1.remove();
 	col2.remove();
 	col3.remove();
+	canvas.selectAll(".info").remove();
 	removePaths();
 }
 

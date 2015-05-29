@@ -28,6 +28,11 @@ function mouseOut()
 		.duration(duration)
 		.delay(50)
 		.remove();
+	canvas.selectAll( ".info" )
+		.transition()
+		.duration(duration)
+		.delay(50)
+		.remove()
 }
 
 // Mouse Over User effects
@@ -56,6 +61,20 @@ function mouseOverEndPanel(element)
 		.attr("opacity",.2);
 
 	// highlight currently selected user
+
+	// Display Info Box
+	canvas.append("svg:image")
+		.attr("class","info")
+		.transition()
+		.duration(duration)
+		.delay(delay)
+		.attr("xlink:href", function(d) { return "/static/recs/" + item.replace(/ /g,"") + ".png"; } )
+		.attr("viewBox","0 0 270 615")
+		.attr("preserveAspectRatio", "none")
+		.attr("x",3*PANEL_W + LEFT_MARGIN - 20 )
+		.attr("y",TOP_MARGIN)
+		.attr("width",270)
+		.attr("height",615);
 }
 
 function mouseOverPanel2(element)
@@ -85,6 +104,7 @@ function mouseOverPanel2(element)
 
 
 	// Highlight Currently Selected User
+
 }
 
 function mouseOverText2( element )
