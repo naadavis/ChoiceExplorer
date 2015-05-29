@@ -13,6 +13,7 @@ var V_MARGIN = 10;
 var TOP_MARGIN = 150;
 var LEFT_MARGIN = 50;
 var RXY = 7;
+var INFO_LEFT = 3*PANEL_W + LEFT_MARGIN - 20;
 
 /*
 var width = 1400,
@@ -50,26 +51,54 @@ canvas.append("text")
 	.attr("class","titleText")
 	.text("Recommendations");
 
-canvas.append("text")
-	.attr("x",20)
-	.attr("y",40)
-	.attr("font-size","30px")
-	.attr("font-weight","bold")
-	.text("Choice Explorer")
+canvas.append("rect")
+	.attr("class","headerRect")
+	.attr("x",10)
+	.attr("y",10)
+	.attr("rx",RXY)
+	.attr("height",60)
+	.attr("width",400);
 
 canvas.append("text")
-	.attr("x",width-300)
-	.attr("y",40)
+	.attr("x",10+200)
+	.attr("y",52)
+	.attr("font-size","40px")
+	.attr("font-weight","bold")
+	.attr("text-anchor","middle")
+	.attr("fill","white")
+	.text("Choice Explorer")
+
+canvas.append("rect")
+	.attr("class","headerRect")
+	.attr("x",LEFT_MARGIN + 3*PANEL_W)
+	.attr("y",10)
+	.attr("rx",RXY)
+	.attr("height",60)
+	.attr("width",300);
+
+canvas.append("text")
+	.attr("x",LEFT_MARGIN + 3*PANEL_W + 150)
+	.attr("y",50)
 	.attr("font-size","30px")
 	.attr("font-weight","bold")
+	.attr("text-anchor","middle")
+	.attr("fill","white")
 	.text("Domain: Music")
 
 canvas.append("rect")
 	.attr("fill","grey")
-	.attr("x",3*PANEL_W + LEFT_MARGIN - 20 )
+	.attr("x", INFO_LEFT )
 	.attr("y",TOP_MARGIN)
 	.attr("width",270)
 	.attr("height",615)
+/*
+canvas.append("text")
+	.text("Hover Over an Item\n to See More Information!")
+	.attr("x", INFO_LEFT + 270/2 )
+	.attr("y", TOP_MARGIN + 20 )
+	.attr("text-anchor","middle")
+	.attr("font","14px sans-serif");
+*/
 
 updateVisualization();
 get_new_recs();

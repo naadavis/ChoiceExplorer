@@ -5,10 +5,10 @@
 	top: 0px;
 }
 
-.canvas rect {
-	fill: lightblue;
-	stroke-width: 2;
-	stroke: black
+.headerRect {
+	fill: #29403c;
+	stroke: white;
+	stroke-width: 3;
 }
 
 .rectText {
