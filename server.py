@@ -1,4 +1,5 @@
 from __future__ import division
+from random import randint
 from flask import Flask, jsonify, render_template, request
 import topN
 app = Flask(__name__)
@@ -30,7 +31,7 @@ def getOrderedRecs(user,sets):
 prof_dict = {}
 
 # file to get profile data from
-f = open('musicData2.tsv','r')
+f = open('musicData3.tsv','r')
 #f = open('smallData.tsv','r')
 
 for line in f:
@@ -69,16 +70,26 @@ def getResult(l):
 	top = topN.TopN(7)
 	# iterate through all profiles, keeping most similar
 	for key, value in prof_dict.iteritems():
-		name = ""
-		if ( key % 2 ) == 0:
-			name = women_names[key//2]
+		top.add((key,value),sjaccard( user, value ) )
+	mens = list(men_names)
+	womens = list(women_names)
+	names = {}
+	for i in range(0,len(top.data)):
+		print i
+		if ( top.data[i][0][0] % 2 ) == 1:
+			pos = randint(0,len(mens)-1)
+			print pos
+			names[top.data[i][0][0]] = mens[pos]
+			del mens[pos]
 		else:
-			name = men_names[key//2]
-		top.add((name,value),sjaccard( user, value ) )
-	result["Relevant"] = map( lambda x: [ x[0][0] , list(x[0][1]) ] , top.data )
+			pos = randint(0,len(womens)-1)
+			print pos
+			names[top.data[i][0][0]] = womens[pos]
+			del womens[pos]
+	result["Relevant"] = map( lambda x: [ names[x[0][0]] , list(x[0][1]) ] , top.data )
 	result["Rec"] = getOrderedRecs(user,map( lambda x: x[0][1], top.data ) )
 	for i in range(0,len(top.data)):
-		print top.data[i][0][0],
+		print names[top.data[i][0][0]],
 		print top.data[i][1]
 	#top.printSmall()
 	return result
