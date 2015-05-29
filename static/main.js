@@ -160,6 +160,8 @@ col2.append("text")
 
 col2.append("svg:image")
 	.attr("xlink:href", function(d) { return "/static/pics/" + d[0].replace(/ /g,"") + ".jpg" } )
+	.attr("onmouseover","mouseOverText2(evt.target)")
+	.attr("onmouseout","mouseOut()")
 	.attr("x", RECT_W - 70 )
 	.attr("y", RECT_H/2 - 50/2)
 	.attr("width",60)
