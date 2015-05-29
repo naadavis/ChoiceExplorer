@@ -152,11 +152,14 @@ function mouseOverPanel2(element)
 		.text("Listens To:")
 		.attr("x",INFO_LEFT + 15 )
 		.attr("y",TOP_MARGIN + 15 + 230 );
-	canvas.selectAll( ".info")
+	var lt = canvas.selectAll( ".info" ).data( clist, function(d) { return d; });
+	lt.enter().append("text");
+	/*canvas.selectAll( ".info")
 		.data( clist, function(d) { return d;})
 		.enter()
-		.append("text")
-		.attr("class","info")
+		.append("text")*/
+		
+		lt.attr("class","info")
 		.attr("fill","white")
 		.attr("font","sans-serif")
 		.attr("font-size","14px")
